@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^article/', include('article.urls')),
     url(r'', include('social_django.urls', namespace = 'social')),
     url(r'^auth/', include('myauth.urls')),
     url(r'^admin/', admin.site.urls),

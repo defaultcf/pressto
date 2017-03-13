@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'social_django',
     'app',
     'myauth.apps.MyauthConfig',
+    'article.apps.ArticleConfig',
 ]
 
 MIDDLEWARE = [
