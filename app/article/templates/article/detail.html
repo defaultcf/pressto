@@ -1,0 +1,8 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+<div class="container">
+    <h5>{{ tirac.subject }}</h5>
+    <p>{{ tirac.body|safe }}</p>
+</div>
+{% endblock %}

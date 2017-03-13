@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
 from .models import Tirac
@@ -28,3 +28,8 @@ def create(request):
         return render(request, 'article/create.html', context)
 
     return render(request, 'article/create.html')
+
+
+def detail(request, tirac_id):
+    tirac = get_object_or_404(Tirac, pk=tirac_id)
+    return render(request, 'article/detail.html', {'tirac':tirac})
