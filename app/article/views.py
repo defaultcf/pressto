@@ -4,7 +4,11 @@ from django.http import HttpResponse
 from .models import Tirac
 
 def index(request):
-    return render(request, 'article/index.html')
+    tirac_list = Tirac.objects.all()
+    context = {
+        'tirac_list': tirac_list,
+    }
+    return render(request, 'article/index.html', context)
 
 
 def create(request):

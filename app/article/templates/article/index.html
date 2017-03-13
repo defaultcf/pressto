@@ -2,6 +2,19 @@
 
 {% block body %}
 <div class="container">
-    Hello, article!
+    {% if tirac_list %}
+    <div class="row">
+        {% for tirac in tirac_list %}
+        <div class="col s12 m6 l4">
+            <div class="card">
+                <div class="card-content">
+                    <p class="card-title">{{ tirac.subject }}</p>
+                    <p class="truncate">{{ tirac.body|safe }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
