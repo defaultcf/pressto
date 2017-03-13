@@ -1,0 +1,15 @@
+version: '2'
+services:
+    django:
+        build: ./app
+        volumes:
+            - ./app/:/mnt
+        ports:
+            - 8080:8080
+        env_file: ./db/.env
+        working_dir: /mnt
+        tty: true
+
+    db:
+        build: ./db
+        env_file: ./db/.env
