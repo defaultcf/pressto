@@ -10,7 +10,9 @@
                 <div class="card-content">
                     <div class="row">
                         <div class="col m3">
-                            <img src="http://furyu.nazo.cc/twicon/{{ tirac.user.username }}" class="circle responsive-img">
+                            <a href="{% url 'myauth:detail' user.username %}">
+                                <img src="http://furyu.nazo.cc/twicon/{{ tirac.user.username }}" class="circle responsive-img">
+                            </a>
                         </div>
                         <div class="col m9">
                             <p class="card-title">

@@ -1,0 +1,8 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+<div class="container">
+    <h5>{{ user.profile.nickname }} <small class="grey-text lighten-4">{{ user.username }}</small></h5>
+    <p>{{ user.profile.bio|safe }}</p>
+</div>
+{% endblock %}
