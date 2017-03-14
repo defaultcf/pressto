@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+<div class="container">
+    <h5>新規記事作成</h5>
+    {% if error %}{{error}}{% endif %}
+    <form action="{% url 'article:create' %}" method="post">
+        {% csrf_token %}
+        <div class="input-field">
+            <input type="text" id="subject" name="subject" class="validate" placeholder="わーい、たーのしー！">
+            <label for="subject">タイトル</label>
+        </div>
+        <label>本文</label>
+        <textarea name="body"></textarea>
+        <button type="submit" name="action" class="btn waves-effect waves-light">作成</button>
+    </form>
+</div>
+
+<script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=hgw82md0zmtusta3eom9bn20pbrsqudt932t14eie5m4j7tu"></script>
+<script>
+tinymce.init({
+    selector:'textarea',
+    menubar: false
+});
+</script>
+
+{% if message %}
+<script>
+Materialize.toast("{{message}}", 3000);
+</script>
+{% endif %}
+{% endblock %}
