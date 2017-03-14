@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Tirac(models.Model):
+    user = models.ForeignKey(User, null=True)
     subject = models.CharField(max_length=100)
     body = models.CharField(max_length=1000)
 
@@ -18,5 +20,6 @@ class Score(models.Model):
 
 
 class Comment(models.Model):
+    user = models.ForeignKey(User, null=True)
     tirac = models.ForeignKey(Tirac, on_delete=models.CASCADE)
     text = models.CharField(max_length=500)

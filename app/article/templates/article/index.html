@@ -5,13 +5,20 @@
     {% if tirac_list %}
     <div class="row">
         {% for tirac in tirac_list %}
-        <div class="col s12 m6 l4">
+        <div class="col s12 m6">
             <div class="card">
                 <div class="card-content">
-                    <p class="card-title">
-                        <a href="{% url 'article:detail' tirac.id %}">{{ tirac.subject }}</a>
-                    </p>
-                    <p class="truncate">{{ tirac.body|safe }}</p>
+                    <div class="row">
+                        <div class="col m3">
+                            <img src="http://furyu.nazo.cc/twicon/{{ tirac.user.username }}" class="circle responsive-img">
+                        </div>
+                        <div class="col m9">
+                            <p class="card-title">
+                                <a href="{% url 'article:detail' tirac.id %}">{{ tirac.subject }}</a>
+                            </p>
+                            <p class="truncate">{{ tirac.body|safe }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

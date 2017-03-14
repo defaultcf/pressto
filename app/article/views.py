@@ -13,10 +13,11 @@ def index(request):
 
 def create(request):
     if request.POST:
+        user = request.user
         subject = request.POST['subject']
         body = request.POST['body']
         if subject and body:
-            tirac = Tirac(subject=subject, body=body)
+            tirac = Tirac(user=user, subject=subject, body=body)
             tirac.save()
             context = {
                 'message': "追加しました"
@@ -37,10 +38,11 @@ def detail(request, tirac_id):
 
 def comment(request, tirac_id):
     if request.POST:
+        user = request.user
         tirac = get_object_or_404(Tirac, pk=tirac_id)
         text = request.POST['text']
         if tirac and text:
-            comment = Comment(tirac=tirac, text=text)
+            comment = Comment(user=user, tirac=tirac, text=text)
             comment.save()
             return redirect(reverse("article:detail", kwargs={'tirac_id':tirac_id}))
 
