@@ -3,7 +3,7 @@
 {% block body %}
 <div class="container">
     <h5>
-        <a href="{% url 'myauth:detail' user.username %}">
+        <a href="{% url 'myauth:detail' tirac.user.username %}">
             <img src="http://furyu.nazo.cc/twicon/{{ tirac.user.username }}" class="circle responsive-img">
         </a>
         {{ tirac.subject }}
@@ -27,7 +27,7 @@
                 <div class="card-content">
                     <div class="row">
                         <div class="col m3">
-                            <a href="{% url 'myauth:detail' user.username %}">
+                            <a href="{% url 'myauth:detail' comment.user.username %}">
                                 <img src="http://furyu.nazo.cc/twicon/{{ comment.user.username }}" class="circle responsive-img">
                             </a>
                         </div>
