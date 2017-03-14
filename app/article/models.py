@@ -15,3 +15,8 @@ class Score(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    tirac = models.ForeignKey(Tirac, on_delete=models.CASCADE)
+    text = models.CharField(max_length=500)

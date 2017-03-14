@@ -4,5 +4,13 @@
 <div class="container">
     <h5>{{ tirac.subject }}</h5>
     <p>{{ tirac.body|safe }}</p>
+
+    <form action="{% url 'article:detail' tirac.id %}">
+        <div class="input-field">
+            <textarea id="comment" class="materialize-textarea"></textarea>
+            <label for="comment">コメント</label>
+        </div>
+        <button type="submit" name="action" class="btn waves-effect waves-light">作成</button>
+    </form>
 </div>
 {% endblock %}
