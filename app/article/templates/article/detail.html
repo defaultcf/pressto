@@ -5,12 +5,32 @@
     <h5>{{ tirac.subject }}</h5>
     <p>{{ tirac.body|safe }}</p>
 
-    <form action="{% url 'article:detail' tirac.id %}">
+    {% if error %}{{error}}{% endif %}
+    <form action="{% url 'article:comment' tirac.id %}" method="post">
+        {% csrf_token %}
         <div class="input-field">
-            <textarea id="comment" class="materialize-textarea"></textarea>
-            <label for="comment">コメント</label>
+            <textarea id="text" name="text" class="materialize-textarea"></textarea>
+            <label for="text">コメント</label>
         </div>
         <button type="submit" name="action" class="btn waves-effect waves-light">作成</button>
     </form>
+
+    <div class="row">
+        {% for comment in tirac.comment_set.all %}
+        <div class="col s12 m6 l4">
+            <div class="card">
+                <div class="card-content">
+                    <p>{{ comment.text }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
+
+{% if message %}
+<script>
+Materialize.toast("{{message}}", 3000);
+</script>
+{% endif %}
 {% endblock %}

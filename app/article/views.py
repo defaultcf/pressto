@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.http import HttpResponse
 
-from .models import Tirac
+from .models import Tirac, Comment
 
 def index(request):
     tirac_list = Tirac.objects.all()
@@ -18,9 +18,9 @@ def create(request):
         if subject and body:
             tirac = Tirac(subject=subject, body=body)
             tirac.save()
-            return render(request, 'article/create.html', {
+            context = {
                 'message': "追加しました"
-            })
+            }
         else:
             context = {
                 'error': "必須項目が入力されていません"
@@ -33,3 +33,15 @@ def create(request):
 def detail(request, tirac_id):
     tirac = get_object_or_404(Tirac, pk=tirac_id)
     return render(request, 'article/detail.html', {'tirac':tirac})
+
+
+def comment(request, tirac_id):
+    if request.POST:
+        tirac = get_object_or_404(Tirac, pk=tirac_id)
+        text = request.POST['text']
+        if tirac and text:
+            comment = Comment(tirac=tirac, text=text)
+            comment.save()
+            return redirect(reverse("article:detail", kwargs={'tirac_id':tirac_id}))
+
+    return HttpResponse("エラー")
