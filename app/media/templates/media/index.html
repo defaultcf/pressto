@@ -6,11 +6,45 @@
 
 <script>
 $(() => {
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
     $('#testButton').click(() => {
-        var img = new FormData($('#testButton').get(0))
+        console.log("Hello");
+        var img = new FormData($('#file').prop('files')[0]);
         $.ajax('{% url 'media:post' %}', {
-            type: 'post',
-            data:
+            type: 'POST',
+            dataType: 'text',
+            data: img,
+            processData: false,
+            contentType: false
+        }).done((res) => {
+            console.log(res);
         });
     });
 });

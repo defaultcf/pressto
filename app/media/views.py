@@ -8,5 +8,6 @@ def post(request):
     if request.POST:
         img = request.POST['img']
         print(dir(img))
+        return img
     else:
         return HttpResponse("Hello, media!")
