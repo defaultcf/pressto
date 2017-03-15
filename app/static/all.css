@@ -3,8 +3,14 @@ html {
 }
 
 body {
-  height: 100%;
   background: #2A2A2A;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 nav {

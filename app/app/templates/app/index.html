@@ -3,9 +3,22 @@
   <link rel="stylesheet" href="http://localhost/static/index/index.css">
 {% endblock %}
 
-{% block body %}
 
-<div class="container">
-    <p>Hello, world!</p>
+{% block index %}
+<div class="red-back">
 </div>
+<div class="img-back">
+  <img style="max-width:90%;margin-top:20px" src="http://localhost/static/index/title_copy.png">
+</div>
+<div class="normal-back">
+  <div class="login-box">
+    <form>
+      <input type="text" id="mailaddress" name="subject" class="validate" placeholder="メールアドレス">
+      <input type="text" id="password" name="subject" class="validate" placeholder="パスワード">
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block body %}
 {% endblock %}
