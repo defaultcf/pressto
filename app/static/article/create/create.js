@@ -97,6 +97,8 @@ $('#file_photo').change(function(){
   next_img_id++;
   var data = new FormData();
   data.append('file_source', $("input[name='file_source']").prop('files')[0]);
+  data.append('id', next_img_id);
+  data.append('name', file.name);
 
   $.ajax({
       url: "/media/post",
@@ -106,21 +108,21 @@ $('#file_photo').change(function(){
       cache: false,
       processData: false,
       contentType: false
-  }).done((data) => {
-      alert(data);
+  }).done((res) => {
+      alert(res);
+      var response = JSON.parse(res);
+      //var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/presstoorg/cm2-logo-panel_joel_wo_lang.png"};
+      var change_before = "\\[loading_img" + (next_img_id-1) + "\\]\\.\\.\\.";
+      var currentUrl = window.location.protocol + '//' + window.location.hostname
+      var change_after  = "![" + response.name + "](" + currentUrl + response.url + ")";
+      var str = $('#writearea').val();
+      var regExp = new RegExp(change_before) ;
+      var result = str.replace( regExp , change_after ) ;
+      $('#writearea').val(result);
+      console.log(change_before+","+change_after);
+      console.log(result);
+      change_view();
   });
-  //--------------以下送ってリクエストきた場合---------------
-  var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/presstoorg/cm2-logo-panel_joel_wo_lang.png"};
-  var change_before = "\\[loading_img" + (next_img_id-1) + "\\]\\.\\.\\.";
-  var change_after  = "![" + response.name + "](" + response.url + ")";
-  var str = $('#writearea').val();
-  var regExp = new RegExp(change_before) ;
-  var result = str.replace( regExp , change_after ) ;
-  $('#writearea').val(result);
-  console.log(change_before+","+change_after);
-  console.log(result);
-  change_view();
-  //---------------ここまで---------------------------------------
 
 
 
