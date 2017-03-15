@@ -1,8 +1,10 @@
 {% extends 'app/base.html' %}
 
 {% block body %}
-<input type="file" id="file">
-<button id="testButton">押して♡</button>
+<form action="{% url 'media:post' %}" method="post" id="file-upload-form" enctype="multipart/form-data"> {% csrf_token %}
+    <input type="file" name="file_source">
+    <button type="submit" class="btn btn-primary" id='upload-btn'>Upload</button>
+</form>
 
 <script>
 $(() => {
@@ -33,20 +35,28 @@ $(() => {
             }
         }
     });
+});
 
-    $('#testButton').click(() => {
-        console.log("Hello");
-        var img = new FormData($('#file').prop('files')[0]);
-        $.ajax('{% url 'media:post' %}', {
-            type: 'POST',
-            dataType: 'text',
-            data: img,
-            processData: false,
-            contentType: false
-        }).done((res) => {
-            console.log(res);
-        });
-    });
+function upload(event) {
+event.preventDefault();
+var data = new FormData($('form').get(0));
+
+$.ajax({
+    url: $(this).attr('action'),
+    type: $(this).attr('method'),
+    data: data,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function(data) {
+        alert('success');
+    }
+});
+return false;
+}
+
+$(function() {
+    $('form').submit(upload);
 });
 </script>
 {% endblock %}
