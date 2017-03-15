@@ -1,0 +1,22 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-image: url("background_image.png");
+  background-size: cover;
+}
+
+.collapsible-body {
+  padding: 0;
+}
+
+.footer-fix {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}

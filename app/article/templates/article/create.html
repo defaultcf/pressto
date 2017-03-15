@@ -1,32 +1,47 @@
 {% extends 'app/base.html' %}
+{% block style %}
+<link rel="stylesheet" href="http://localhost/static/article/create/create.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+<link rel="stylesheet" href="http://localhost/static/article/create/markdown.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.5/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+{% endblock %}
+
 
 {% block body %}
-<div class="container">
-    <h5>新規記事作成</h5>
+
+<div class="container" style="width:90%;max-width:1200px;">
     {% if error %}{{error}}{% endif %}
-    <form action="{% url 'article:create' %}" method="post">
+    <form action="{% url 'article:create' %}" method="post" style="width:100%;margin:0 auto;display:table">
         {% csrf_token %}
         <div class="input-field">
-            <input type="text" id="subject" name="subject" class="validate" placeholder="わーい、たーのしー！">
-            <label for="subject">タイトル</label>
+            <input type="text" id="title" name="subject" class="validate" placeholder="タイトルを入力" style="background:#fff">
         </div>
-        <label>本文</label>
-        <textarea name="body"></textarea>
-        <button type="submit" name="action" class="btn waves-effect waves-light">作成</button>
+        <div class="input-field">
+            <input type="text" id="tag" name="subject" class="validate" placeholder="タグをスペース区切りで5つまで入力　例:ギター　ペンタトニック　ポップ" style="background:#fff">
+        </div>
+        <div id="addcontent-area">
+          <label for="file_photo" class="btn">
+              ＋写真を選択
+              <input type="file" id="file_photo" type="button" style="display:none">
+          </label>
+
+          <label for="file_music" class="btn">
+              ＋音楽を選択
+              <input type="file" id="file_music" type="button" style="display:none">
+          </label>
+        </div>
+        <textarea id="writearea" name="body"></textarea>
+        <div id="viewarea" class="markdownContent" name="body"></div>
+        <div style="clear:both"></div>
+        <div class="btn right waves-effect waves-light" id="press"><img src="http://localhost/static/article/create/img/press.png" ></div>
+<!--    <button type="submit" name="action" class="btn right waves-effect waves-light" id="press"><img src="http://localhost/static/article/create/img/press.png" ></button>
+-->
     </form>
 </div>
 
-<script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=hgw82md0zmtusta3eom9bn20pbrsqudt932t14eie5m4j7tu"></script>
-<script>
-tinymce.init({
-    selector:'textarea',
-    menubar: false
-});
-</script>
+<script type="text/javascript" src='http://localhost/static/article/create/create.js'></script>
 
-{% if message %}
-<script>
-Materialize.toast("{{message}}", 3000);
-</script>
-{% endif %}
 {% endblock %}
