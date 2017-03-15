@@ -21,6 +21,44 @@ body {
   opacity: 0.8;
 }
 
+.normal-back {
+  position: fixed;
+  top: 0px;
+  right: 0;
+  height: 100%;
+  width: 55%;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}
+
+.login-box {
+  width: 300px;
+  height: 500px;
+  margin: auto;
+  margin-top: 150px;
+  background: #fff;
+  padding: 10px;
+}
+
+#mailaddress {
+  width: 80%;
+}
+
+#password {
+  width: 80%;
+}
+
+.img-back {
+  position: fixed;
+  top: 60px;
+  height: 100%;
+  width: 60%;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}
+
 .footer-fix {
   position: fixed;
   width: 100%;

@@ -13,18 +13,10 @@
     <link rel="stylesheet" href="http://localhost/static/all.css">
     {% block style %}
     {% endblock %}
-
-
 </head>
 <body>
-{% if request.path == '/' %}
-<div class="red-back">
-</div>
-<div style="position:fixed;top:60px;height:100%;width:60%;background:#EEE;vertical-align: middle;text-align:center; display: table-cell;">
-  <img style="max-width:90%;" src="http://localhost/static/index/title_copy.png">
-</div>
-{% endif %}
-
+{% block index %}
+{% endblock %}
     <nav>
         <div class="nav-wrapper">
             <div class="btn">新しい記事を書く</div>
@@ -81,10 +73,10 @@
         <li><a href="{% url 'myauth:logout' %}">ログアウト</a></li>
     </ul>
     {% endif %}
-
+    <main>
     {% block body %}
     {% endblock %}
-
+  </main>
 
   <footer class="page-footer{% if request.path == '/' %} footer-fix{% endif %}">
       <div class="container">
