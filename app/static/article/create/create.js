@@ -1,5 +1,38 @@
 $(function(){
 console.log("hello world");
+
+/**
+ * CSRF
+ */
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+//end of CSRF
+
 marked.setOptions({langPrefix:''});
 //------------------------------------------------------------------------------
 
@@ -62,21 +95,20 @@ $('#file_photo').change(function(){
   }
   insertAtCaret('#writearea',"[loading_img" + next_img_id + "]...");
   next_img_id++;
-/* 送ったことにします。
+  var data = new FormData();
+  data.append('file_source', $("input[name='file_source']").prop('files')[0]);
+
   $.ajax({
-      url  : "http://localhost:8000/article/media/post",
-      type : "POST",
-      data : formdata,
-      cache       : false,
-      contentType : false,
-      processData : false,
-      dataType    : "image"
-  }).done(function(data, textStatus, jqXHR){
+      url: "/media/post",
+      type: 'post',
+      enctype: 'multipart/form-data',
+      data: data,
+      cache: false,
+      processData: false,
+      contentType: false
+  }).done((data) => {
       alert(data);
-  }).fail(function(jqXHR, textStatus, errorThrown){
-      alert("fail");
   });
-*/
   //--------------以下送ってリクエストきた場合---------------
   var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/presstoorg/cm2-logo-panel_joel_wo_lang.png"};
   var change_before = "\\[loading_img" + (next_img_id-1) + "\\]\\.\\.\\.";
