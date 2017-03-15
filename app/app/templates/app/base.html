@@ -9,15 +9,18 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <style>
-    .collapsible-body {
-        padding: 0;
-    }
-    </style>
+
+    {% if request.path == '/' %}
+      <link rel="stylesheet" href="http://localhost/library/index/index.css">
+    {% endif %}
+
+
 </head>
 <body>
     <nav>
         <div class="nav-wrapper" style="background-color:rgb(20,35,43);">
+            <div class="btn" style="background:#E41D28;margin-left:10px">新しい記事を書く</div>
+
             <a href="/" class="brand-logo center">pressto</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
@@ -79,5 +82,17 @@
         draggable: true
     });
     </script>
+
+  <footer class="page-footer{% if request.path == '/' %} footer-fix{% endif %}">
+        <div class="container">
+          <div class="right">PRESSTO</div>
+        </div>
+        <div style="clear:both"></div>
+        <div class="footer-copyright">
+          <div class="container">
+          © 2014 Copyright Text
+          </div>
+        </div>
+      </footer>
 </body>
 </html>
