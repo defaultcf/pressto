@@ -1,8 +1,7 @@
 {% extends 'app/base.html' %}
 
 {% block body %}
-<input type="file" id="file">
-<button id="testButton">押して♡</button>
+<input type="file" name="file_source">
 
 <script>
 $(() => {
@@ -33,20 +32,31 @@ $(() => {
             }
         }
     });
+});
 
-    $('#testButton').click(() => {
-        console.log("Hello");
-        var img = new FormData($('#file').prop('files')[0]);
-        $.ajax('{% url 'media:post' %}', {
-            type: 'POST',
-            dataType: 'text',
-            data: img,
-            processData: false,
-            contentType: false
-        }).done((res) => {
-            console.log(res);
-        });
-    });
+function upload(event) {
+event.preventDefault();
+//var data = new FormData($('form').get(0));
+var data = new FormData();
+data.append('file_source', $("input[name='file_source']").prop('files')[0]);
+
+$.ajax({
+    url: "{% url 'media:post' %}",
+    type: 'post',
+    enctype: 'multipart/form-data',
+    data: data,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function(data) {
+        alert('success');
+    }
+});
+return false;
+}
+
+$(function() {
+    $("input[name='file_source']").on("change", upload);
 });
 </script>
 {% endblock %}
