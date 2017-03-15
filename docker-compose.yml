@@ -1,11 +1,20 @@
 version: '2'
 services:
+    nginx:
+        build: ./nginx
+        links:
+            - django
+        volumes:
+            - ./app/static:/mnt
+        ports:
+            - 80:80
+
     django:
         build: ./app
+        links:
+            - db
         volumes:
             - ./app/:/mnt
-        ports:
-            - 8080:8080
         env_file: ./db/.env
         working_dir: /mnt
         tty: true
