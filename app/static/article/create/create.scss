@@ -6,15 +6,29 @@
   background:#666;
 }
 
+input{
+  background:#fff;
+}
+
 #writearea{
+  background:#fff;
   width:50%;
   height:500px;
   float:left;
 }
 
 #viewarea{
+  background:#fff;
   width:50%;
   height:500px;
   float:left;
   overflow:scroll;
+}
+
+#press{
+  width:250px;
+  background:#E41D28;
+  padding-top:5px;
+  padding-bottom:4px;
+  margin:28px 10px 1px 10px;
 }

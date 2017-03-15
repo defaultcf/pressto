@@ -1,8 +1,4 @@
 $(function(){
-var style = '<link rel="stylesheet" href="http://localhost/pressto/app/article/templates/article/create.css">' + '<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">' + '<link rel="stylesheet" href="http://localhost/pressto/app/article/templates/article/markdown.css"> ';
-$('head link:last').after(style);
-
-
 console.log("hello world");
 marked.setOptions({langPrefix:''});
 //------------------------------------------------------------------------------
@@ -82,7 +78,7 @@ $('#file_photo').change(function(){
   });
 */
   //--------------以下送ってリクエストきた場合---------------
-  var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/pressto/cm2-logo-panel_joel_wo_lang.png"};
+  var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/presstoorg/cm2-logo-panel_joel_wo_lang.png"};
   var change_before = "\\[loading_img" + (next_img_id-1) + "\\]\\.\\.\\.";
   var change_after  = "![" + response.name + "](" + response.url + ")";
   var str = $('#writearea').val();
@@ -128,7 +124,7 @@ $('#file_music').change(function(){
   });
 */
   //--------以下送ってリクエストきた場合---
-  var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/pressto/bgm_maoudamashii_orchestra26.mp3"};
+  var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/presstoorg/bgm_maoudamashii_orchestra26.mp3"};
   var change_before = "\\[loading_msc" + (next_img_id-1) + "\]...";
   var change_after  = "%[" + response.name + "](" + response.url + ")";
   var str = $('#writearea').val();
@@ -146,6 +142,14 @@ $('#file_music').change(function(){
 
 
 //---------------------音声ここまで-------------------------
+
+$('#press').click(function(){
+  var w_str = $('#writearea').val();
+  var v_str = $('#viewarea').html();
+  console.log(w_str);
+  console.log(v_str);
+});
+
 function insertAtCaret(target, str) {
   var obj = $(target);
   obj.focus();
