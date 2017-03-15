@@ -1,0 +1,18 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+<input type="file" id="file">
+<button id="testButton">押して♡</button>
+
+<script>
+$(() => {
+    $('#testButton').click(() => {
+        var img = new FormData($('#testButton').get(0))
+        $.ajax('{% url 'media:post' %}', {
+            type: 'post',
+            data:
+        });
+    });
+});
+</script>
+{% endblock %}
