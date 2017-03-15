@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'app',
     'myauth.apps.MyauthConfig',
     'article.apps.ArticleConfig',
+    'media.apps.MediaConfig',
 ]
 
 MIDDLEWARE = [
