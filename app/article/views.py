@@ -17,8 +17,9 @@ def create(request):
         user = request.user
         subject = request.POST['subject']
         body = request.POST['body']
+        md = request.POST['md']
         header = request.FILES['header_img']
-        if subject and body and header:
+        if subject and body and md and header:
             ext = "." + str(header).rsplit(".", 1)[1]
             filepath = str(uuid.uuid4()) + ext
             updir = '/mnt/static/headers/' + filepath
@@ -27,7 +28,7 @@ def create(request):
                 destination.write(chunk)
             destination.close()
 
-            tirac = Tirac(user=user, subject=subject, body=body, header_img=filepath)
+            tirac = Tirac(user=user, subject=subject, body=body, md=md,header_img=filepath)
             tirac.save()
             context = {
                 'message': "追加しました"

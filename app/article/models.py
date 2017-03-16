@@ -5,6 +5,7 @@ class Tirac(models.Model):
     user = models.ForeignKey(User, null=True)
     subject = models.CharField(max_length=100)
     body = models.CharField(max_length=1000)
+    md = models.CharField(max_length=1000)
     header_img = models.CharField(max_length=100)
 
     def __str__(self):
