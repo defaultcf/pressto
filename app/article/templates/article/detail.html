@@ -3,7 +3,7 @@
 {% block style %}
 <script>
 document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/static/article/create/markdown.css">');
-
+document.write('<script src="http://'+ location.hostname +'/static/article/detail/iine.js"><\/script>');
 </script>
 
 {% endblock %}
@@ -26,6 +26,9 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
         {{ tirac.subject }}
         </div>
         <div style="float:right;margin:5px;color:#fff;">日時</div>
+        <button class="btn waves-effect waves-light" style="float:right;">いいね
+            <i class="material-icons right">send</i>
+        </button>
       </div>
       <div style="position:absolute; bottom:26px; left:148px;color:#fff;font-size:14px;">
         <span style="font-weight:100">Written by</span>　{{ tirac.user.username }}
