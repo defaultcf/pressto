@@ -25,7 +25,7 @@ SECRET_KEY = 'm88!#0kr6g3if-2yai4%xlx3fr1e5n0iz3b(i0h0c$h@n*rc5h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django']
+ALLOWED_HOSTS = ['pressto.cf']
 
 
 # Application definition

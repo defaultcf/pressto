@@ -3,7 +3,7 @@ services:
     nginx:
         build: ./nginx
         links:
-            - django
+            - django:pressto.cf
         volumes:
             - ./app/static:/mnt
         ports:
