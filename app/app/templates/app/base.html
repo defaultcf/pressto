@@ -26,7 +26,9 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
 {% endblock %}
     <nav>
         <div class="nav-wrapper">
-            <div class="btn">新しい記事を書く</div>
+            <a href="{% url 'article:create' %}">
+                <div class="btn">新しい記事を書く</div>
+            </a>
 
             <a href="/article" class="brand-logo center"><img src="http://localhost/static/img/header_logo.png" style="margin-top:11px;"></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
