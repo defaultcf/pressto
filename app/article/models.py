@@ -25,3 +25,8 @@ class Comment(models.Model):
     user = models.ForeignKey(User, null=True)
     tirac = models.ForeignKey(Tirac, on_delete=models.CASCADE)
     text = models.CharField(max_length=500)
+
+
+class Iine(models.Model):
+    user = models.ForeignKey(User)
+    tirac = models.ForeignKey(Tirac, on_delete=models.CASCADE)

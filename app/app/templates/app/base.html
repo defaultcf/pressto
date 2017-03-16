@@ -15,8 +15,9 @@
 <link rel="stylesheet" href="http://localhost/static/module/materialize.min.css">
 <script src="http://localhost/static/module/materialize.min.js"></script>
 -->
-
-    <link rel="stylesheet" href="http://localhost/static/all.css">
+<script>
+document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/static/all.css">');
+</script>
     {% block style %}
     {% endblock %}
 </head>
@@ -25,9 +26,11 @@
 {% endblock %}
     <nav>
         <div class="nav-wrapper">
-            <div class="btn">新しい記事を書く</div>
+            <a href="{% url 'article:create' %}">
+                <div class="btn">新しい記事を書く</div>
+            </a>
 
-            <a href="/" class="brand-logo center"><img src="http://localhost/static/img/header_logo.png" style="margin-top:11px;"></a>
+            <a href="/article" class="brand-logo center"><img src="http://localhost/static/img/header_logo.png" style="margin-top:11px;"></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 {% if request.user.is_authenticated %}
