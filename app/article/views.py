@@ -73,3 +73,13 @@ def comment(request, tirac_id):
             return redirect(reverse("article:detail", kwargs={'tirac_id':tirac_id}))
 
     return HttpResponse("エラー")
+
+
+def tag(request, tag_name):
+    t = get_object_or_404(Tags, tagname=tag_name)
+    settags = SetTag.objects.filter(tag=t)
+    context = {
+        'tagname': tag_name,
+        'settags': settags,
+    }
+    return render(request, 'article/tag.html', context)
