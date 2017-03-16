@@ -1,8 +1,11 @@
 {% extends 'app/base.html' %}
 {% block style %}
-<link rel="stylesheet" href="http://localhost/static/article/create/create.css">
+<script>
+document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/static/article/create/create.css">');
+document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/static/article/create/markdown.css">');
+</script>
+
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
-<link rel="stylesheet" href="http://localhost/static/article/create/markdown.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.5/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
@@ -52,6 +55,9 @@
     </form>
 </div>
 
-<script type="text/javascript" src='http://localhost/static/article/create/create.js'></script>
+
+<script>
+document.write('<script type="text/javascript" src="http://'+ location.hostname +'/static/article/create/create.js"><\/script>');
+</script>
 
 {% endblock %}
