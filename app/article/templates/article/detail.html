@@ -29,6 +29,10 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
         <button id="iine" class="btn waves-effect waves-light" style="float:right;">いいね
             <i class="material-icons right">send</i>
         </button>
+        <div style="display:none;">
+            <p id="user_id">{{ request.user.id }}</p>
+            <p id="tirac_id">{{ tirac.id }}</p>
+        </div>
       </div>
       <div style="position:absolute; bottom:26px; left:148px;color:#fff;font-size:14px;">
         <span style="font-weight:100">Written by</span>　{{ tirac.user.username }}
