@@ -116,7 +116,7 @@ $('#file_photo').change(function(){
       var response = JSON.parse(res);
       //var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/presstoorg/cm2-logo-panel_joel_wo_lang.png"};
       var change_before = "\\[loading_img" + (next_img_id-1) + "\\]\\.\\.\\.";
-      var currentUrl = window.location.protocol + '//' + window.location.hostname
+      var currentUrl = window.location.protocol + '//' + window.location.hostname;
       var change_after  = "![" + response.name + "](" + currentUrl + response.url + ")";
       var str = $('#writearea').val();
       var regExp = new RegExp(change_before) ;
@@ -145,31 +145,33 @@ $('#file_music').change(function(){
   }
   insertAtCaret('#writearea',"[loading_msc" + next_img_id + "]...");
   next_img_id++;
-/* 送ったことにします。
+  var data = new FormData();
+  data.append('file_source', $("input[name='file_music']").prop('files')[0]);
+  data.append('id', next_img_id);
+  data.append('name', file.name);
+
   $.ajax({
-      url  : "http://localhost:8000/media/post",
-      type : "POST",
-      data : formdata,
-      cache       : false,
-      contentType : false,
-      processData : false,
-      dataType    : "image"
-  }).done(function(data, textStatus, jqXHR){
-      alert(data);
-  }).fail(function(jqXHR, textStatus, errorThrown){
-      alert("fail");
+      url: "/media/post",
+      type: 'post',
+      enctype: 'multipart/form-data',
+      data: data,
+      cache: false,
+      processData: false,
+      contentType: false
+  }).done((res) => {
+      alert(res);
+      var response = JSON.parse(res);
+      //var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/presstoorg/bgm_maoudamashii_orchestra26.mp3"};
+      var change_before = "\\[loading_msc" + (next_img_id-1) + "\]...";
+      var currentUrl = window.location.protocol + '//' + window.location.hostname;
+      var change_after  = "%[" + response.name + "](" + currentUrl + response.url + ")";
+      var str = $('#writearea').val();
+      var regExp = new RegExp(change_before) ;
+      var result = str.replace( regExp , change_after ) ;
+      $('#writearea').val(result);
+      change_view();
   });
-*/
-  //--------以下送ってリクエストきた場合---
-  var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/presstoorg/bgm_maoudamashii_orchestra26.mp3"};
-  var change_before = "\\[loading_msc" + (next_img_id-1) + "\]...";
-  var change_after  = "%[" + response.name + "](" + response.url + ")";
-  var str = $('#writearea').val();
-  var regExp = new RegExp(change_before) ;
-  var result = str.replace( regExp , change_after ) ;
-  $('#writearea').val(result);
-  change_view()
-  //---------------ここまで--------------
+
 
 
 
