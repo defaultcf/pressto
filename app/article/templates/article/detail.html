@@ -1,14 +1,39 @@
 {% extends 'app/base.html' %}
 
+{% block style %}
+<link rel="stylesheet" href="http://localhost/static/article/create/markdown.css">
+{% endblock %}
+
 {% block body %}
 <div class="container">
-    <h5>
+    <div style="position:relative;max-width:100%;min-height:180px;background-image:url('/static/headers/{{tirac.header_img}}')">
+      <div style="position:absolute;bottom:0;width:100%;max-height:80px;height:100%;background:#666;opacicy:0.8">
         <a href="{% url 'myauth:detail' tirac.user.username %}">
             <img src="http://furyu.nazo.cc/twicon/{{ tirac.user.username }}" class="circle responsive-img">
         </a>
         {{ tirac.subject }}
-    </h5>
-    <p>{{ tirac.body|safe }}</p>
+      </div>
+    </div>
+    <div class="markdownContent" style="color:#fff;background:#383838;border:1px solid #6F6F6F;border-top:0;padding:20px;border-bottom:22px solid #E41D28">
+      {{ tirac.body|safe }}
+    </div>
+
+    <div style="font-size:26px;color:#fff;margin:15px 0px;">COMMENT</div>
+    {% for comment in tirac.comment_set.all %}
+    <div style="width:100%;min-height:180px;background:#383838">
+      <div style="position:relative;margin:0;width:100%;">
+        <div style="width:100%;height:40px;background:#081115padding-left:60px;line-height:40px;color:#fff;">
+          {% url 'myauth:detail' comment.user.username %}
+        </div>
+        <p>{{ comment.text }}</p>
+        <div style="position:absolute;top:14px;left:20px;">
+              <a href="{% url 'myauth:detail' comment.user.username %}">
+                  <img src="http://furyu.nazo.cc/twicon/{{ comment.user.username }}" class="circle responsive-img">
+              </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
 
     {% if error %}{{error}}{% endif %}
     <form action="{% url 'article:comment' tirac.id %}" method="post">
@@ -21,24 +46,7 @@
     </form>
 
     <div class="row">
-        {% for comment in tirac.comment_set.all %}
-        <div class="col s12 m6 l4">
-            <div class="card">
-                <div class="card-content">
-                    <div class="row">
-                        <div class="col m3">
-                            <a href="{% url 'myauth:detail' comment.user.username %}">
-                                <img src="http://furyu.nazo.cc/twicon/{{ comment.user.username }}" class="circle responsive-img">
-                            </a>
-                        </div>
-                        <div class="col m9">
-                            <p>{{ comment.text }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+
     </div>
 </div>
 
