@@ -14,13 +14,22 @@
 
 <div class="container" style="width:90%;max-width:1200px;">
     {% if error %}{{error}}{% endif %}
-    <form action="{% url 'article:create' %}" method="post" style="width:100%;margin:0 auto;display:table">
+    <form action="{% url 'article:create' %}" method="post" enctype="multipart/form-data" style="width:100%;margin:0 auto;display:table">
         {% csrf_token %}
         <div class="input-field">
             <input type="text" id="title" name="subject" class="validate" placeholder="タイトルを入力" style="background:#fff">
         </div>
         <div class="input-field">
             <input type="text" id="tag" name="tag" class="validate" placeholder="タグをスペース区切りで5つまで入力　例:ギター　ペンタトニック　ポップ" style="background:#fff">
+        </div>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>ヘッダー画像</span>
+            <input type="file" name="header_img">
+          </div>
+          <div class="file-path-wrapper" style="color:#fff">
+            <input class="file-path validate" type="text">
+          </div>
         </div>
         <div id="addcontent-area">
           <label for="file_photo" class="btn">
@@ -35,6 +44,7 @@
         </div>
         <textarea id="writearea" name="body"></textarea>
         <div id="viewarea" class="markdownContent"></div>
+        <input type="hidden" id="savearea" name="md" value=""></textarea>
         <div style="clear:both"></div>
         <button type="submit" name="action" class="btn right waves-effect waves-light" id="press"><img src="http://localhost/static/article/create/img/press.png" ></button>
     </form>
