@@ -1,6 +1,7 @@
 
 .markdownContent {
-  font-size: 1.15em;
+  font-size: 1.15em
+  font-size: 20px;
   padding:5px;
 }
 
@@ -135,6 +136,7 @@
 .markdownContent p {
   margin: 1.4em 0;
   font-size: 1em;
+  font-size: 18px;
   line-height: 1.875;
 }
 
@@ -233,8 +235,9 @@
   margin-top: 2.5em;
   margin-bottom: .5em;
   padding-bottom: .3em;
-  border-bottom: solid 3px #eee;
+  border-bottom: solid 1px #979797;
   font-size: 1.7em;
+  font-size:32px;
   line-height: 1.2;
 }
 
@@ -251,7 +254,8 @@
   margin-top: 2.5em;
   margin-bottom: .5em;
   padding-bottom: .3em;
-  border-bottom: solid 1px #eee;
+  border-bottom: solid 1px #979797;
+  font-size: 28px;
   font-size: 1.6em;
   line-height: 1.225;
 }
@@ -268,6 +272,7 @@
 .markdownContent h3 {
   margin-top: 3em;
   font-size: 1.3em;
+  font-size: 23px;
   line-height: 1.43;
 }
 
@@ -279,6 +284,7 @@
 .markdownContent h4 {
   margin-top: 1.3em;
   font-size: 1.2em;
+  font-size: 21px;
 }
 
 .markdownContent h5 {

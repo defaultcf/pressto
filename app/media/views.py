@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 import uuid, os, json
-from .forms import FileUploadForm
+from .forms import FileUploadForm, IineForm
 
 def index(request):
     return render(request, 'media/index.html')
@@ -30,3 +30,14 @@ def post(request):
             print('invalid form')
             print(form.errors)
     return HttpResponse("sender")
+
+
+def iine(request):
+    if request.method == 'POST':
+        form = IineForm(data=request.POST)
+        if form.is_valid():
+            print("Success!")
+        else:
+            print("Faild...")
+
+    return HttpResponse("Hello, Ajax!")
