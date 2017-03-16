@@ -41,7 +41,7 @@ def create(request):
             tirac = Tirac(user=user, subject=subject, body=body, md=md,header_img=filepath)
             tirac.save()
             for t in tag:
-                tags = Tags(tag=t)
+                tags = Tags(tagname=t)
                 tags.save()
                 setag = SetTag(tirac=tirac, tag=tags)
                 setag.save()

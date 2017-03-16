@@ -33,7 +33,7 @@ class Iine(models.Model):
 
 
 class Tags(models.Model):
-    tag = models.CharField(max_length=100, unique=True)
+    tagname = models.CharField(max_length=100, unique=True)
 
 
 class SetTag(models.Model):

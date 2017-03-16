@@ -41,6 +41,11 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
     <div class="markdownContent" style="color:#fff;background:#383838;border:1px solid #6F6F6F;border-top:0;padding:20px;border-bottom:22px solid #E41D28">
       {{ tirac.md|safe }}
     </div>
+    <p id="tags">タグ: 
+        {% for tag in tirac.settag_set.all %}
+        <span>{{ tag.tag.tagname }}</span>
+        {% endfor %}
+    </p>
 
     <div style="font-size:26px;color:#fff;margin:60px 0px 30px 0px;">COMMENT</div>
     {% for comment in tirac.comment_set.all %}
