@@ -1,0 +1,71 @@
+{% extends 'app/base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="http://localhost/static/article/article.css">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% if tirac_list %}
+    <div class="row">
+      <div class="col s12 article-tab">
+        <div class="col s7">
+          <ul class="tabs">
+            <li class="tab col s3"><a href="#test1">話題の記事</a></li>
+            <li class="tab col s3"><a href="#test2">おすすめ</a></li>
+            <li class="tab col s3"><a href="#test3">演奏</a></li>
+            <li class="tab col s3"><a href="#test4">作曲</a></li>
+          </ul>
+          <div class="card col s12 big-art" style='background-image:url("http://localhost/static/index/background_image.png")'>
+            <div class="big-art-title">
+              <div class="col m3" style="margin:21px 10px;">
+                <img src="http://furyu.nazo.cc/twicon/caiussuab002" class="circle responsive-img">
+              </div>
+              ペンタトニックとは何か
+            </div>
+          </div>
+        </div>
+        <div class="col s5">
+          <div class="tag-list">
+          </div>
+          <div class="card medium-art"  style='background-image:url("http://localhost/static/index/background_image.png")'>
+            <div class="medium-black"></div>
+          </div>
+          <div class="card medium-art">
+            <div class="medium-black"></div>
+          </div>
+          <div class="card medium-art" style="margin-bottom:0">
+            <div class="medium-black"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col s12">
+        {% for tirac in tirac_list %}
+
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col m3">
+                            <a href="{% url 'myauth:detail' tirac.user.username %}">
+                                <img src="http://furyu.nazo.cc/twicon/{{ tirac.user.username }}" class="circle responsive-img">
+                            </a>
+                        </div>
+                        <div class="col m9">
+                            <p class="card-title">
+                                <a href="{% url 'article:detail' tirac.id %}">{{ tirac.subject }}</a>
+                            </p>
+                            <p class="truncate">{{ tirac.body|safe }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+</div>
+
+<script src="http://localhost/static/article/article.js"></script>
+{% endblock %}

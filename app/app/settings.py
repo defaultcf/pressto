@@ -25,7 +25,7 @@ SECRET_KEY = 'm88!#0kr6g3if-2yai4%xlx3fr1e5n0iz3b(i0h0c$h@n*rc5h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django']
 
 
 # Application definition
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'social_django',
     'app',
     'myauth.apps.MyauthConfig',
+    'article.apps.ArticleConfig',
+    'media.apps.MediaConfig',
 ]
 
 MIDDLEWARE = [
@@ -138,5 +140,5 @@ SOCIAL_AUTH_TWITTER_KEY = os.environ['TWITTER_KEY']
 SOCIAL_AUTH_TWITTER_SECRET = os.environ['TWITTER_SECRET']
 
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/auth/login'
+LOGIN_URL = '/u/login'
 LOGOUT_REDIRECT_URL = '/'

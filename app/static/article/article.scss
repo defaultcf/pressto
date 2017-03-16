@@ -1,0 +1,54 @@
+.container{
+  width:90%;
+  max-width:1000px;
+}
+
+.tabs{
+  .tab{
+    background:#2A2A2A;
+    a{
+      color:#fff;
+    }
+  }
+}
+
+.big-art{
+  position:relative;
+  margin-top:20px;
+//  height:280px;
+  height:285px;
+
+  background:#fff;
+  background-size:cover;
+}
+.big-art-title{
+  position:absolute;
+  top:195px;
+  left:0;
+  width:100%;
+  height:90px;
+  background:#666;
+  opacity:0.8;
+}
+
+
+.tag-list{
+  height:48px;
+  margin-bottom:20px;
+  background:#fff;
+}
+
+.medium-art{
+  position:relative;
+  height:90px;
+  background:#fff;
+  margin-bottom:5px;
+  background-size:cover;
+}
+.medium-black{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#666;
+  opacity:0.8;
+}

@@ -1,0 +1,57 @@
+{% extends 'app/base.html' %}
+{% block style %}
+<link rel="stylesheet" href="http://localhost/static/article/create/create.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+<link rel="stylesheet" href="http://localhost/static/article/create/markdown.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.5/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container" style="width:90%;max-width:1200px;">
+    {% if error %}{{error}}{% endif %}
+    <form action="{% url 'article:create' %}" method="post" enctype="multipart/form-data" style="width:100%;margin:0 auto;display:table">
+        {% csrf_token %}
+        <div class="input-field">
+            <input type="text" id="title" name="subject" class="validate" placeholder="タイトルを入力" style="background:#fff">
+        </div>
+        <div class="input-field">
+            <input type="text" id="tag" name="tag" class="validate" placeholder="タグをスペース区切りで5つまで入力　例:ギター　ペンタトニック　ポップ" style="background:#fff">
+        </div>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>ヘッダー画像</span>
+            <input type="file" name="header_img">
+          </div>
+          <div class="file-path-wrapper" style="color:#fff">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+        <div id="addcontent-area">
+          <label for="file_photo" class="btn" style="margin:10px;">
+              <img style="height:20px;margin:3px;" src="http://localhost/static/article/create/img/pict.png">
+              写真を選択
+              <input type="file" id="file_photo" name="file_source" style="display:none">
+          </label>
+
+          <label for="file_music" class="btn" style="margin:10px;">
+            <img style="height:20px;margin:3px;" src="http://localhost/static/article/create/img/audio.png">
+              音楽を選択
+              <input type="file" id="file_music" name="file_music" style="display:none">
+          </label>
+        </div>
+        <textarea id="writearea" name="body"></textarea>
+        <div id="viewarea" class="markdownContent"></div>
+        <input type="hidden" id="savearea" name="md" value=""></textarea>
+        <div style="clear:both"></div>
+        <button type="submit" name="action" class="btn right waves-effect waves-light" id="press"><img src="http://localhost/static/article/create/img/press.png" ></button>
+    </form>
+</div>
+
+<script type="text/javascript" src='http://localhost/static/article/create/create.js'></script>
+
+{% endblock %}

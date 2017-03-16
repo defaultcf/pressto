@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+<div class="container">
+    <form action="{% url 'myauth:setting' %}" method="post">
+        {% csrf_token %}
+        <div class="input-field">
+            <input type="text" id="nickname" name="nickname" value="{{ request.user.profile.nickname }}" placeholder="{{ request.user.username }}">
+            <label for="nickname">ニックネーム</label>
+        </div>
+        <label>プロフィール</label>
+        <textarea name="bio">{{ request.user.profile.bio }}</textarea>
+        <button type="submit" name="action" class="btn waves-effect waves-light">変更</button>
+    </form>
+</div>
+
+<script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=hgw82md0zmtusta3eom9bn20pbrsqudt932t14eie5m4j7tu"></script>
+<script>
+tinymce.init({
+    selector:'textarea',
+    menubar: false
+});
+</script>
+{% endblock %}

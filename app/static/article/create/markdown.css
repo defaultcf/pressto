@@ -1,0 +1,742 @@
+
+.markdownContent {
+  font-size: 1.15em;
+  padding:5px;
+}
+
+.markdownContent.markdownContent-diff a {
+  text-decoration: none;
+}
+
+.markdownContent.markdownContent-diff a[data-before-href] {
+  border-bottom: dotted 1px #999;
+  text-decoration: none;
+}
+
+.markdownContent.markdownContent-diff .del {
+  background-color: #ffeaea;
+  color: #cb4000;
+}
+
+.markdownContent.markdownContent-diff .del:first-child > * {
+  margin-top: 0 !important;
+}
+
+.markdownContent.markdownContent-diff ins {
+  background-color: #e9ffe9;
+  text-decoration: none;
+}
+
+.markdownContent.markdownContent-diff ins:first-child > * {
+  margin-top: 0 !important;
+}
+
+.markdownContent.markdownContent-diff li.removed {
+  color: #cb4000;
+}
+
+.markdownContent.markdownContent-diff > * {
+  margin-left: 16px !important;
+}
+
+.markdownContent.markdownContent-diff > .del {
+  display: block;
+  margin-left: 0 !important;
+  padding-left: 16px;
+  border-left: solid 4px #cb4000;
+  background-color: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdownContent.markdownContent-diff > ins {
+  display: block;
+  margin-left: 0 !important;
+  padding-left: 16px;
+  border-left: solid 4px #7dcd55;
+  background-color: inherit;
+  color: inherit;
+}
+
+.markdownContent.markdownContent-diff > .changed {
+  margin-left: 0 !important;
+  padding-left: 16px;
+  border-left: solid 4px #ffc134;
+}
+
+.markdownContent > :first-child {
+  margin-top: 0 !important;
+}
+
+.markdownContent-headingEnabled h1, .markdownContent-headingEnabled h2, .markdownContent-headingEnabled h3, .markdownContent-headingEnabled h4, .markdownContent-headingEnabled h5, .markdownContent-headingEnabled h6 {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .markdownContent-headingEnabled h1:hover .fa.fa-link, .markdownContent-headingEnabled h1:hover .icon-link, .markdownContent-headingEnabled h2:hover .fa.fa-link, .markdownContent-headingEnabled h2:hover .icon-link, .markdownContent-headingEnabled h3:hover .fa.fa-link, .markdownContent-headingEnabled h3:hover .icon-link, .markdownContent-headingEnabled h4:hover .fa.fa-link, .markdownContent-headingEnabled h4:hover .icon-link, .markdownContent-headingEnabled h5:hover .fa.fa-link, .markdownContent-headingEnabled h5:hover .icon-link, .markdownContent-headingEnabled h6:hover .fa.fa-link, .markdownContent-headingEnabled h6:hover .icon-link {
+    display: inline-block;
+  }
+  .markdownContent-headingEnabled h1 .fa.fa-link:hover, .markdownContent-headingEnabled h1 .icon-link:hover, .markdownContent-headingEnabled h2 .fa.fa-link:hover, .markdownContent-headingEnabled h2 .icon-link:hover, .markdownContent-headingEnabled h3 .fa.fa-link:hover, .markdownContent-headingEnabled h3 .icon-link:hover, .markdownContent-headingEnabled h4 .fa.fa-link:hover, .markdownContent-headingEnabled h4 .icon-link:hover, .markdownContent-headingEnabled h5 .fa.fa-link:hover, .markdownContent-headingEnabled h5 .icon-link:hover, .markdownContent-headingEnabled h6 .fa.fa-link:hover, .markdownContent-headingEnabled h6 .icon-link:hover {
+    color: #337ab7;
+    text-decoration: none;
+  }
+}
+
+.markdownContent blockquote {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: .8em;
+  padding: .8em;
+  border-left: solid 4px #ddd;
+  color: #555;
+  font-size: 1em;
+}
+
+.markdownContent blockquote > :first-child {
+  margin-top: 0;
+}
+
+.markdownContent blockquote h1, .markdownContent blockquote h2, .markdownContent blockquote h3, .markdownContent blockquote h4, .markdownContent blockquote h5, .markdownContent blockquote h6 {
+  color: #555;
+}
+
+.markdownContent a code {
+  color: #337ab7;
+}
+
+.markdownContent hr {
+  margin: 1em 0;
+  height: 2px;
+  border: 0;
+  background-color: #ccc;
+}
+
+.is-slide .markdownContent hr {
+  visibility: hidden;
+}
+
+.markdownContent em {
+  font-style: italic;
+  font-family: Helvetica Neue,Helvetica,"ヒラギノ角ゴ ProN W3",Hiragino Kaku Gothic ProN,"游ゴシック",YuGothic,sans-serif;
+}
+
+.markdownContent strong {
+  font-weight: 700;
+}
+
+.markdownContent b {
+  font-weight: 700;
+}
+
+.markdownContent del {
+  text-decoration: line-through;
+}
+
+.markdownContent p {
+  margin: 1.4em 0;
+  font-size: 1em;
+  line-height: 1.875;
+}
+
+.markdownContent p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .markdownContent p {
+    line-height: 1.6;
+  }
+}
+
+.markdownContent img {
+  box-sizing: border-box;
+  margin: 0;
+  max-width: 100%;
+  vertical-align: middle;
+  display:inherit;
+}
+
+.markdownContent dl {
+  margin: 1em 0;
+}
+
+.markdownContent dl dd {
+  margin-left: 2em;
+}
+
+.markdownContent table {
+  display: block;
+  overflow: auto;
+  margin: 1em 0;
+  border-collapse: collapse;
+  border-left: solid 1px #d9d9d9;
+}
+
+.markdownContent td, .markdownContent th {
+  padding: 8px 10px;
+  border-right: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
+}
+
+.markdownContent thead td, .markdownContent th {
+  border-top: solid 1px #d9d9d9;
+  background-color: #fff;
+  font-weight: 700;
+}
+
+.markdownContent tbody tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.markdownContent li p:first-child {
+  margin: 0;
+}
+
+.markdownContent ol, .markdownContent ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+  line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+  .markdownContent ol, .markdownContent ul {
+    line-height: 1.6;
+  }
+}
+
+.markdownContent ul > li {
+  list-style-type: disc;
+}
+
+.markdownContent ol > li {
+  list-style-type: decimal;
+}
+
+.markdownContent li > ol, .markdownContent li > ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdownContent h1, .markdownContent h2, .markdownContent h3, .markdownContent h4, .markdownContent h5, .markdownContent h6 {
+  margin: 1.35em 0 .7em;
+  font-weight: 400;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Hiragino Kaku Gothic ProN,"メイリオ",meiryo,sans-serif;
+  line-height: 1.4;
+}
+
+.markdownContent h1 + ol, .markdownContent h1 + p, .markdownContent h1 + ul, .markdownContent h2 + ol, .markdownContent h2 + p, .markdownContent h2 + ul, .markdownContent h3 + ol, .markdownContent h3 + p, .markdownContent h3 + ul, .markdownContent h4 + ol, .markdownContent h4 + p, .markdownContent h4 + ul, .markdownContent h5 + ol, .markdownContent h5 + p, .markdownContent h5 + ul, .markdownContent h6 + ol, .markdownContent h6 + p, .markdownContent h6 + ul {
+  margin-top: 0;
+}
+
+.markdownContent h1 {
+  margin-top: 2.5em;
+  margin-bottom: .5em;
+  padding-bottom: .3em;
+  border-bottom: solid 3px #eee;
+  font-size: 1.7em;
+  line-height: 1.2;
+}
+
+.markdownContent h1 .emoji {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.markdownContent h1 + h2 {
+  margin-top: 1.1em;
+}
+
+.markdownContent h2 {
+  margin-top: 2.5em;
+  margin-bottom: .5em;
+  padding-bottom: .3em;
+  border-bottom: solid 1px #eee;
+  font-size: 1.6em;
+  line-height: 1.225;
+}
+
+.markdownContent h2 .emoji {
+  width: 1em;
+  height: 1em;
+}
+
+.markdownContent h2 + h3 {
+  margin-top: 1.1em;
+}
+
+.markdownContent h3 {
+  margin-top: 3em;
+  font-size: 1.3em;
+  line-height: 1.43;
+}
+
+.markdownContent h3 .emoji {
+  width: 1em;
+  height: 1em;
+}
+
+.markdownContent h4 {
+  margin-top: 1.3em;
+  font-size: 1.2em;
+}
+
+.markdownContent h5 {
+  margin-top: 1.5em;
+  font-size: 1.1em;
+}
+
+.markdownContent h6 {
+  margin-top: 1.5em;
+  color: #777;
+  font-size: 1em;
+}
+
+.markdownContent details > summary {
+  display: list-item;
+  outline-style: none;
+}
+
+.markdownContent .code-frame {
+  overflow: hidden;
+  margin: 1em 0;
+  border-radius: 3px;
+  background-color: #f7f7f7;
+  line-height: 0;
+}
+
+.markdownContent .code-frame pre {
+  overflow-x: auto;
+  margin: 0;
+  padding: .6em 1.2em;
+  border: 0;
+  border-radius: 3px;
+  background-color: #f7f7f7;
+  white-space: pre;
+  word-wrap: normal;
+  font-size: .8em;
+  font-family: Consolas,Liberation Mono,Menlo,Courier,monospace;
+  line-height: 1.2;
+}
+
+.markdownContent .code-frame pre code {
+  word-wrap: normal;
+}
+
+.markdownContent .code-lang {
+  display: inline-block;
+  margin: 0;
+  padding: .25em .5em;
+  background-color: rgba(0, 0, 0, 0.07);
+  color: #555;
+  font-weight: 400;
+  font-size: .8em;
+  line-height: 1;
+}
+
+.markdownContent code {
+  font-size: .9em;
+}
+
+.markdownContent .emoji {
+  width: 20px;
+  height: 20px;
+  vertical-align: text-bottom;
+  object-fit: contain;
+}
+
+.markdownContent .fa.fa-link, .markdownContent .icon-link {
+  position: absolute;
+  top: 50%;
+  left: -28px;
+  display: none;
+  margin-top: -18px;
+  padding: 10px 5px 10px 10px;
+  color: #555;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.markdownContent .footnotes {
+  margin-top: 2em;
+  font-size: .9em;
+}
+
+.markdownContent .footnotes hr {
+  display: none;
+}
+
+.markdownContent .fragment {
+  position: relative;
+  top: -10px;
+  display: block;
+}
+
+.markdownContent .highlight {
+  background: #fff;
+}
+
+.markdownContent .highlight .c {
+  color: #998;
+  font-style: italic;
+}
+
+.markdownContent .highlight .err {
+  background-color: #e3d2d2;
+  color: #a61717;
+}
+
+.markdownContent .highlight .k {
+  font-weight: 700;
+}
+
+.markdownContent .highlight .o {
+  font-weight: 700;
+}
+
+.markdownContent .highlight .cm {
+  color: #998;
+  font-style: italic;
+}
+
+.markdownContent .highlight .cp {
+  color: #999;
+  font-weight: 700;
+}
+
+.markdownContent .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdownContent .highlight .cs {
+  color: #999;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.markdownContent .highlight .gd {
+  background-color: #fdd;
+  color: #000;
+}
+
+.markdownContent .highlight .gd .x {
+  background-color: #faa;
+  color: #000;
+}
+
+.markdownContent .highlight .ge {
+  font-style: italic;
+}
+
+.markdownContent .highlight .gr {
+  color: #a00;
+}
+
+.markdownContent .highlight .gh {
+  color: #999;
+}
+
+.markdownContent .highlight .gi {
+  background-color: #dfd;
+  color: #000;
+}
+
+.markdownContent .highlight .gi .x {
+  background-color: #afa;
+  color: #000;
+}
+
+.markdownContent .highlight .go {
+  color: #888;
+}
+
+.markdownContent .highlight .gp {
+  color: #555;
+}
+
+.markdownContent .highlight .gs {
+  font-weight: 700;
+}
+
+.markdownContent .highlight .gu {
+  color: purple;
+  font-weight: 700;
+}
+
+.markdownContent .highlight .gt {
+  color: #a00;
+}
+
+.markdownContent .highlight .kc {
+  font-weight: 700;
+}
+
+.markdownContent .highlight .kd {
+  font-weight: 700;
+}
+
+.markdownContent .highlight .kn {
+  font-weight: 700;
+}
+
+.markdownContent .highlight .kp {
+  font-weight: 700;
+}
+
+.markdownContent .highlight .kr {
+  font-weight: 700;
+}
+
+.markdownContent .highlight .kt {
+  color: #458;
+  font-weight: 700;
+}
+
+.markdownContent .highlight .m {
+  color: #099;
+}
+
+.markdownContent .highlight .s {
+  color: #d14;
+}
+
+.markdownContent .highlight .n {
+  color: #333;
+}
+
+.markdownContent .highlight .na {
+  color: teal;
+}
+
+.markdownContent .highlight .nb {
+  color: #0086b3;
+}
+
+.markdownContent .highlight .nc {
+  color: #458;
+  font-weight: 700;
+}
+
+.markdownContent .highlight .no {
+  color: teal;
+}
+
+.markdownContent .highlight .ni {
+  color: purple;
+}
+
+.markdownContent .highlight .ne {
+  color: #900;
+  font-weight: 700;
+}
+
+.markdownContent .highlight .nf {
+  color: #900;
+  font-weight: 700;
+}
+
+.markdownContent .highlight .nn {
+  color: #555;
+}
+
+.markdownContent .highlight .nt {
+  color: navy;
+}
+
+.markdownContent .highlight .nv {
+  color: teal;
+}
+
+.markdownContent .highlight .ow {
+  font-weight: 700;
+}
+
+.markdownContent .highlight .w {
+  color: #bbb;
+}
+
+.markdownContent .highlight .mf {
+  color: #099;
+}
+
+.markdownContent .highlight .mh {
+  color: #099;
+}
+
+.markdownContent .highlight .mi {
+  color: #099;
+}
+
+.markdownContent .highlight .mo {
+  color: #099;
+}
+
+.markdownContent .highlight .sb {
+  color: #d14;
+}
+
+.markdownContent .highlight .sc {
+  color: #d14;
+}
+
+.markdownContent .highlight .sd {
+  color: #d14;
+}
+
+.markdownContent .highlight .s2 {
+  color: #d14;
+}
+
+.markdownContent .highlight .se {
+  color: #d14;
+}
+
+.markdownContent .highlight .sh {
+  color: #d14;
+}
+
+.markdownContent .highlight .si {
+  color: #d14;
+}
+
+.markdownContent .highlight .sx {
+  color: #d14;
+}
+
+.markdownContent .highlight .sr {
+  color: #009926;
+}
+
+.markdownContent .highlight .s1 {
+  color: #d14;
+}
+
+.markdownContent .highlight .ss {
+  color: #990073;
+}
+
+.markdownContent .highlight .bp {
+  color: #999;
+}
+
+.markdownContent .highlight .vc {
+  color: teal;
+}
+
+.markdownContent .highlight .vg {
+  color: teal;
+}
+
+.markdownContent .highlight .vi {
+  color: teal;
+}
+
+.markdownContent .highlight .il {
+  color: #099;
+}
+
+.markdownContent .highlight .gc {
+  background-color: #eaf2f5;
+  color: #999;
+}
+
+@media (max-width: 415px) {
+  .markdownContent .MathJax_Display {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
+
+.markdownContent .MathJax img, .markdownContent .MathJax_Display img {
+  border: 0 !important;
+}
+
+.markdownContent .parenthesis li {
+  list-style-type: none;
+}
+
+.markdownContent .parenthesis li span {
+  margin-right: .5em;
+  margin-left: -1.5em;
+}
+
+.markdownContent .task-list-item {
+  list-style-type: none;
+}
+
+.markdownContent .task-list-item-checkbox {
+  margin: .4em .5em 0 -1.3em;
+}
+
+.markdownContent .task-list-item-checkbox[disabled] {
+  cursor: default;
+}
+
+.markdownContent .user-icon, .markdownContent .coeditors-icon, .markdownContent .project-icon {
+  margin-right: .3em;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  vertical-align: text-bottom;
+  text-align: center;
+}
+
+.markdownContent .coeditors-icon {
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  border: 0 solid #35c669 !important;
+  border-radius: 50%;
+  background-color: #e8f9ee !important;
+  color: #35c669 !important;
+  text-align: center;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13.5px;
+  font-family: FontAwesome;
+  line-height: 1;
+  line-height: 13.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.markdownContent .coeditors-icon:before {
+  content: "";
+}
+
+.markdownContent .coeditors-icon:before {
+  display: inline-block;
+  margin-top: 5.4px;
+}
+
+.markdownContent .project-icon {
+  display: inline-block;
+  color: #999;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  font-family: FontAwesome;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.markdownContent .project-icon:before {
+  content: "";
+}
+
+.markdownContent .anchor-target {
+  border-radius: .1em;
+  background-color: #fff3b8;
+}
+
+.markdownContent iframe, .markdownContent video {
+  max-width: 100%;
+}
+
+.markdownContent video {
+  object-fit: contain;
+}
