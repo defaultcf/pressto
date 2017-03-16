@@ -18,15 +18,21 @@ def create(request):
         subject = request.POST['subject']
         body = request.POST['body']
         md = request.POST['md']
-        header = request.FILES['header_img']
-        if subject and body and md and header:
-            ext = "." + str(header).rsplit(".", 1)[1]
-            filepath = str(uuid.uuid4()) + ext
-            updir = '/mnt/static/headers/' + filepath
-            destination = open(updir, 'wb+')
-            for chunk in header.chunks():
-                destination.write(chunk)
-            destination.close()
+        try:
+            header = request.FILES['header_img']
+        except KeyError:
+            header = ""
+
+        if subject and body and md:
+            filepath = ""
+            if header != "":
+                ext = "." + str(header).rsplit(".", 1)[1]
+                filepath = str(uuid.uuid4()) + ext
+                updir = '/mnt/static/headers/' + filepath
+                destination = open(updir, 'wb+')
+                for chunk in header.chunks():
+                    destination.write(chunk)
+                destination.close()
 
             tirac = Tirac(user=user, subject=subject, body=body, md=md,header_img=filepath)
             tirac.save()
