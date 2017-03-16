@@ -82,6 +82,9 @@ function change_view(){
   console.log(str);
 
   $('#viewarea').html(str);
+  $('#savearea').val(str);
+
+  console.log($('#savearea').val());
 }
 
 var next_img_id = 0;
