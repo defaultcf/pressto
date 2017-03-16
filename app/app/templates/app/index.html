@@ -1,6 +1,8 @@
 {% extends 'app/base.html' %}
 {% block style %}
-  <link rel="stylesheet" href="http://localhost/static/index/index.css">
+<script>
+document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/static/index/index.css">');
+</script>
 {% endblock %}
 
 
