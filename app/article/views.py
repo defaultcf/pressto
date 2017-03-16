@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.http import HttpResponse
 
@@ -12,6 +13,7 @@ def index(request):
     return render(request, 'article/index.html', context)
 
 
+@login_required
 def create(request):
     if request.POST:
         user = request.user
