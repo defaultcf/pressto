@@ -25,6 +25,8 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
         <div class="input-field">
             <input type="text" id="tag" name="tag" class="validate" placeholder="タグをスペース区切りで5つまで入力　例:ギター　ペンタトニック　ポップ" style="background:#fff">
         </div>
+        <div class="chips"></div>
+        <input type="hidden" name="tags" value="">
         <div class="file-field input-field">
           <div class="btn">
             <span>ヘッダー画像</span>
@@ -38,13 +40,13 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
           <label for="file_photo" class="btn" style="margin:10px;">
               <img style="height:20px;margin:3px;" src="http://localhost/static/article/create/img/pict.png">
               写真を選択
-              <input type="file" id="file_photo" name="file_source" style="display:none">
+              <input type="file" id="file_photo" name="file_source" style="display:none" accept="image/*">
           </label>
 
           <label for="file_music" class="btn" style="margin:10px;">
             <img style="height:20px;margin:3px;" src="http://localhost/static/article/create/img/audio.png">
               音楽を選択
-              <input type="file" id="file_music" name="file_music" style="display:none">
+              <input type="file" id="file_music" name="file_music" style="display:none" accept="audio/*">
           </label>
         </div>
         <textarea id="writearea" name="body"></textarea>
@@ -58,6 +60,7 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
 
 <script>
 document.write('<script type="text/javascript" src="http://'+ location.hostname +'/static/article/create/create.js"><\/script>');
+document.write('<script type="text/javascript" src="http://'+ location.hostname +'/static/article/create/tags.js"><\/script>');
 </script>
 
 {% endblock %}

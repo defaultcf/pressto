@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.http import HttpResponse
 
-from .models import Tirac, Comment
+from .models import Tirac, Tags, SetTag, Comment
 import uuid, os
 
 def index(request):
@@ -20,6 +20,8 @@ def create(request):
         subject = request.POST['subject']
         body = request.POST['body']
         md = request.POST['md']
+        tag = request.POST['tags'].split(",")
+        tag.pop()
         try:
             header = request.FILES['header_img']
         except KeyError:
@@ -38,6 +40,11 @@ def create(request):
 
             tirac = Tirac(user=user, subject=subject, body=body, md=md,header_img=filepath)
             tirac.save()
+            for t in tag:
+                tags = Tags(tagname=t)
+                tags.save()
+                setag = SetTag(tirac=tirac, tag=tags)
+                setag.save()
             context = {
                 'message': "追加しました"
             }
@@ -66,3 +73,13 @@ def comment(request, tirac_id):
             return redirect(reverse("article:detail", kwargs={'tirac_id':tirac_id}))
 
     return HttpResponse("エラー")
+
+
+def tag(request, tag_name):
+    t = get_object_or_404(Tags, tagname=tag_name)
+    settags = SetTag.objects.filter(tag=t)
+    context = {
+        'tagname': tag_name,
+        'settags': settags,
+    }
+    return render(request, 'article/tag.html', context)

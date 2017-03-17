@@ -1,0 +1,9 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+<h3>{{ tagname }}</h5>
+{% for settag in settags %}
+<h5>{{ settag.tirac.subject }}</h5>
+<p>{{ settag.tirac.body }}</p>
+{% endfor %}
+{% endblock %}
