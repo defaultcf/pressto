@@ -18,12 +18,16 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
             <li class="tab col s3"><a href="#test3">演奏</a></li>
             <li class="tab col s3"><a href="#test4">作曲</a></li>
           </ul>
-          <div class="card col s12 big-art" style='background-image:url("/static/index/background_image.png")'>
+          <div class="card col s12 big-art" style='background-image:url("/static/headers/0b69a80a-1690-49cf-bc35-86a233a2c6f7.png")'>
             <div class="big-art-title">
               <div class="col m3" style="margin:21px 10px;">
                 <img src="http://furyu.nazo.cc/twicon/caiussuab002" class="circle responsive-img">
               </div>
-              ペンタトニックとは何か
+              <div style="color:white;font-size:30px;">
+                <a href="{% url 'article:detail' 1 %}" style="color:white;">
+                  ペンタトニックとは何か
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -35,13 +39,27 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
 
           </div>
           <div class="card medium-art"  style='background-image:url("/static/index/background_image.png")'>
-            <div class="medium-black"></div>
+            <div class="medium-black" style="color:white;">
+                <img src="http://furyu.nazo.cc/twicon/caiussuab002" class="circle responsive-img">
+                <a href="{% url 'article:detail' 2 %}" style="color:white;">
+                おすすめDTMソフト
+                </a>
+            </div>
           </div>
           <div class="card medium-art"  style='background-image:url("/static/index/background_image.png")'>
-            <div class="medium-black"></div>
+            <div class="medium-black" style="color:white;">
+                <img src="http://furyu.nazo.cc/twicon/caiussuab002" class="circle responsive-img">
+                <a href="{% url 'article:detail' 3 %}" style="color:white;">
+                MS処理でマスタリング
+            </div>
           </div>
           <div class="card medium-art" style='margin-bottom:0;background-image:url("/static/index/background_image.png")'>
-            <div class="medium-black"></div>
+            <div class="medium-black" style="color:white;">
+                <img src="http://furyu.nazo.cc/twicon/caiussuab002" class="circle responsive-img">
+                <a href="{% url 'article:detail' 4 %}" style="color:white;">
+                ベースにエフェクターって必要？
+                </a>
+            </div>
           </div>
         </div>
       </div>
