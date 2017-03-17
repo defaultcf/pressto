@@ -9,14 +9,15 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
 {% block index %}
 
 <div class="img-back">
-  <img style="max-width:90%;margin-top:20px" src="http://localhost/static/index/title_copy.png">
+  <script>
+  document.write('<img style="max-width:90%;margin-top:20px" src="http://'+ location.hostname +'/static/index/title_copy.png">');
+  </script>
 </div>
 <div class="normal-back">
   <div class="login-box">
-    <form>
-      <input type="text" id="mailaddress" name="subject" class="validate" placeholder="メールアドレス">
-      <input type="text" id="password" name="subject" class="validate" placeholder="パスワード">
-    </form>
+    <script>
+    document.write('<img src="http://'+ location.hostname +'/static/index/login_frame2x.png">');
+    </script>
   </div>
 </div>
 {% endblock %}
