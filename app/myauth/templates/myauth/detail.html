@@ -64,7 +64,7 @@
       <img style="width:100px;margin:40px;" src="http://furyu.nazo.cc/twicon/{{user.username }}" class="circle responsive-img">
     </div>
     <div style="position:absolute;top:0;left:180px;height:180px;color:#fff;padding:50px;padding-left:5px;">
-      <div style="font-size:30px">{{ tirac.subject }}</div>
+      <div style="font-size:30px"><a href="{% url 'article:detail' tirac.id %}" style="color:white;">{{ tirac.subject }}</a></div>
       <div style="font-size:14px;margin-top:10px;"><span style="font-weight:100">Written by </span>{{ user.username }}</div>
     </div>
     <div style="position:absolute;top:0;right:0;color:#fff;padding:10px;font-size:12px;">

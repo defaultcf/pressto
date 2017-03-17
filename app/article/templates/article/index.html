@@ -52,11 +52,17 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
         <div style="position:relative;max-width:100%;height:180px;background-image:url('/static/article/default.jpg');border:1px solid #6F6F6F">
           <div style="position:absolute;width:100%;height:100%;background:#000;opacity:0.92"></div>
           <div style="position:absolute;top:0;left:0;width:180px;height:180px;">
-            <img style="width:100px;margin:40px;" src="http://furyu.nazo.cc/twicon/{{ tirac.user.username }}" class="circle responsive-img">
+              <a href="{% url 'myauth:detail' tirac.user.username %}" style="color:white;">
+                  <img style="width:100px;margin:40px;" src="http://furyu.nazo.cc/twicon/{{ tirac.user.username }}" class="circle responsive-img">
+              </a>
           </div>
           <div style="position:absolute;top:0;left:180px;height:180px;color:#fff;padding:50px;padding-left:5px;">
             <a style="color:#fff" href="{% url 'article:detail' tirac.id %}" ><div style="font-size:30px">{{ tirac.subject }}</div></a>
-            <div style="font-size:14px;margin-top:10px;"><span style="font-weight:100">Written by </span>{{ tirac.user.username }}</div>
+            <div style="font-size:14px;margin-top:10px;"><span style="font-weight:100">Written by </span>
+                <a href="{% url 'myauth:detail' tirac.user.username %}" style="color:white;">
+                    {{ tirac.user.username }}
+                </a>
+            </div>
           </div>
           <div style="position:absolute;top:0;right:0;color:#fff;padding:10px;font-size:12px;">
             {% for t in tirac.settag_set.all %}
