@@ -89,6 +89,8 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
     {% endfor %}
 
     {% if error %}{{error}}{% endif %}
+
+    {% if request.user.is_authenticated %}
     <form action="{% url 'article:comment' tirac.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="input-field">
@@ -106,6 +108,10 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
         </div>
         <button type="submit" name="action" class="btn waves-effect waves-light">コメントする</button>
     </form>
+    {% else %}
+    <p style="color:white;">コメントを残すにはログインが必要です</p>
+    <a href="{% url 'social:begin' 'twitter' %}" class="waves-effect waves-light btn">Twitterログイン</a>
+    {% endif %}
 
     <div class="row">
 
