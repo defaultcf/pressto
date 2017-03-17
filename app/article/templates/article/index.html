@@ -18,7 +18,7 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
             <li class="tab col s3"><a href="#test3">演奏</a></li>
             <li class="tab col s3"><a href="#test4">作曲</a></li>
           </ul>
-          <div class="card col s12 big-art" style='background-image:url("http://localhost/static/index/background_image.png")'>
+          <div class="card col s12 big-art" style='background-image:url("/static/index/background_image.png")'>
             <div class="big-art-title">
               <div class="col m3" style="margin:21px 10px;">
                 <img src="http://furyu.nazo.cc/twicon/caiussuab002" class="circle responsive-img">
@@ -34,13 +34,13 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
               <a style="color:#EEE" href="/article/tag/DTM">#DTM</a>
 
           </div>
-          <div class="card medium-art"  style='background-image:url("http://localhost/static/index/background_image.png")'>
+          <div class="card medium-art"  style='background-image:url("/static/index/background_image.png")'>
             <div class="medium-black"></div>
           </div>
-          <div class="card medium-art"  style='background-image:url("http://localhost/static/index/background_image.png")'>
+          <div class="card medium-art"  style='background-image:url("/static/index/background_image.png")'>
             <div class="medium-black"></div>
           </div>
-          <div class="card medium-art" style='margin-bottom:0;background-image:url("http://localhost/static/index/background_image.png")'>
+          <div class="card medium-art" style='margin-bottom:0;background-image:url("/static/index/background_image.png")'>
             <div class="medium-black"></div>
           </div>
         </div>
@@ -49,14 +49,20 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
         {% for tirac in tirac_list %}
 
 
-        <div style="position:relative;max-width:100%;height:180px;background-image:url('http://localhost/static/article/default.jpg');border:1px solid #6F6F6F">
+        <div style="position:relative;max-width:100%;height:180px;background-image:url('/static/article/default.jpg');border:1px solid #6F6F6F">
           <div style="position:absolute;width:100%;height:100%;background:#000;opacity:0.92"></div>
           <div style="position:absolute;top:0;left:0;width:180px;height:180px;">
-            <img style="width:100px;margin:40px;" src="http://furyu.nazo.cc/twicon/{{ tirac.user.username }}" class="circle responsive-img">
+              <a href="{% url 'myauth:detail' tirac.user.username %}" style="color:white;">
+                  <img style="width:100px;margin:40px;" src="http://furyu.nazo.cc/twicon/{{ tirac.user.username }}" class="circle responsive-img">
+              </a>
           </div>
           <div style="position:absolute;top:0;left:180px;height:180px;color:#fff;padding:50px;padding-left:5px;">
             <a style="color:#fff" href="{% url 'article:detail' tirac.id %}" ><div style="font-size:30px">{{ tirac.subject }}</div></a>
-            <div style="font-size:14px;margin-top:10px;"><span style="font-weight:100">Written by </span>{{ tirac.user.username }}</div>
+            <div style="font-size:14px;margin-top:10px;"><span style="font-weight:100">Written by </span>
+                <a href="{% url 'myauth:detail' tirac.user.username %}" style="color:white;">
+                    {{ tirac.user.username }}
+                </a>
+            </div>
           </div>
           <div style="position:absolute;top:0;right:0;color:#fff;padding:10px;font-size:12px;">
             {% for t in tirac.settag_set.all %}
@@ -64,7 +70,7 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
             {% endfor %}
           </div>
           <div style="position:absolute;bottom:0;right:0;color:#00D80A;font-size:14px;padding:10px;padding-right:20px;">
-            <img src="http://localhost/static/img/ic_thumb_up_black_24px.png" style="margin-right:3px;">5
+            <img src="/static/img/ic_thumb_up_black_24px.png" style="margin-right:3px;">5
           </div>
         </div>
 
@@ -75,5 +81,5 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
     {% endif %}
 </div>
 
-<script src="http://localhost/static/article/article.js"></script>
+<script src="/static/article/article.js"></script>
 {% endblock %}

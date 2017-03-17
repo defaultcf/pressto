@@ -33,12 +33,15 @@ body {
 }
 
 .login-box {
-  width: 300px;
+  width: 400px;
   height: 500px;
   margin: auto;
   margin-top: 150px;
-  background: #fff;
   padding: 10px;
+}
+
+.login-box img {
+  width: 100%;
 }
 
 #mailaddress {
