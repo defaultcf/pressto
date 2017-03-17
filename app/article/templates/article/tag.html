@@ -9,7 +9,9 @@
 </div>
 {% for settag in settags %}
 
-<div style="position:relative;max-width:100%;height:180px;background-image:url('http://localhost/static/article/default.jpg');border:1px solid #6F6F6F">
+<script>
+document.write('<div style="position:relative;max-width:100%;height:180px;background-image:url(' + 'http://' + location.hostname + '/static/article/default.jpg' + ');border:1px solid #6F6F6F">');
+</script>
   <div style="position:absolute;width:100%;height:100%;background:#000;opacity:0.92"></div>
   <div style="position:absolute;top:0;left:0;width:180px;height:180px;">
     <img style="width:100px;margin:40px;" src="http://furyu.nazo.cc/twicon/{{ settag.tirac.user.username }}" class="circle responsive-img">
@@ -24,7 +26,9 @@
     {% endfor %}
   </div>
   <div style="position:absolute;bottom:0;right:0;color:#00D80A;font-size:14px;padding:10px;padding-right:20px;">
-    <img src="http://localhost/static/img/ic_thumb_up_black_24px.png" style="margin-right:3px;">5
+    <script>
+      document.write('<img src="http://'+location.hostname+'/static/img/ic_thumb_up_black_24px.png" style="margin-right:3px;">5');
+    </script>
   </div>
 </div>
 
