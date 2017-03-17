@@ -5,7 +5,7 @@
     <form action="{% url 'myauth:setting' %}" method="post">
         {% csrf_token %}
         <div class="input-field">
-            <input type="text" id="nickname" name="nickname" value="{{ request.user.profile.nickname }}" placeholder="{{ request.user.username }}">
+            <input type="text" id="nickname" class="white-text" name="nickname" value="{{ request.user.profile.nickname }}" placeholder="{{ request.user.username }}">
             <label for="nickname">ニックネーム</label>
         </div>
         <label>プロフィール</label>
