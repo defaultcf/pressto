@@ -112,7 +112,6 @@ $('#file_photo').change(function(){
       processData: false,
       contentType: false
   }).done((res) => {
-      alert(res);
       var response = JSON.parse(res);
       //var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/presstoorg/cm2-logo-panel_joel_wo_lang.png"};
       var change_before = "\\[loading_img" + (next_img_id-1) + "\\]\\.\\.\\.";
@@ -159,7 +158,6 @@ $('#file_music').change(function(){
       processData: false,
       contentType: false
   }).done((res) => {
-      alert(res);
       var response = JSON.parse(res);
       //var response = {"id":next_img_id-1,"name":file.name,"url":"http://localhost/presstoorg/bgm_maoudamashii_orchestra26.mp3"};
       var change_before = "\\[loading_msc" + (next_img_id-1) + "\]...";
@@ -205,6 +203,6 @@ function insertAtCaret(target, str) {
   }
 }
 
-
+$('.chips input').attr('placeholder',"タグをEnter区切りで入力");
 
 });

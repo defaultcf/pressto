@@ -25,14 +25,13 @@
   left: 0;
   width: 100%;
   height: 90px;
-  background: #666;
+  background: #000;
   opacity: 0.8;
 }
 
 .tag-list {
   height: 48px;
   margin-bottom: 20px;
-  background: #fff;
 }
 
 .medium-art {
@@ -47,6 +46,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #666;
+  background: #000;
   opacity: 0.8;
 }

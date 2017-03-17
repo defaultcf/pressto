@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^create$', views.create, name='create'),
     url(r'^(?P<tirac_id>[0-9]+)/$', views.detail, name='detail'),
     url(r'^(?P<tirac_id>[0-9]+)/comment$', views.comment, name='comment'),
+    url(r'^tag/(?P<tag_name>[^\/]+)/$', views.tag, name='tag'),
 ]
