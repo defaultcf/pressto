@@ -43,7 +43,7 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
     </div>
     <p id="tags">タグ:
         {% for t in tirac.settag_set.all %}
-        <span>{{ t.tag.tagname }}</span>
+        <a href="{% url 'article:tag' t.tag.tagname %}">{{ t.tag.tagname }}</a>
         {% endfor %}
     </p>
 
