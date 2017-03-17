@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 class Tirac(models.Model):
     user = models.ForeignKey(User, null=True)
     subject = models.CharField(max_length=100)
-    body = models.CharField(max_length=1000)
-    md = models.CharField(max_length=1000)
+    body = models.CharField(max_length=10000)
+    md = models.CharField(max_length=30000)
     header_img = models.CharField(max_length=100)
 
     def __str__(self):
@@ -24,7 +24,7 @@ class Score(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(User, null=True)
     tirac = models.ForeignKey(Tirac, on_delete=models.CASCADE)
-    text = models.CharField(max_length=500)
+    text = models.CharField(max_length=5000)
     audio = models.CharField(max_length=100)
 
 
