@@ -11,7 +11,13 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
 {% block body %}
 <div class="container" style="max-width:960px">
     <div style="position:relative;max-width:100%;min-height:180px;)">
-      <img style="width:100%;min-height:180px;" src="http://localhost/static/article/default.jpg">
+        <script>
+        {% if tirac.header_img == "" %}
+        document.write('<img style="width:100%;min-height:180px;" src="http://' + location.hostname + '/static/article/default.jpg">');
+        {% else %}
+        document.write('<img style="width:100%;min-height:180px;" src="http://' + location.hostname + '/static/headers/{{ tirac.header_img }}">');
+        {% endif %}
+        </script>
       <!--
       <img style="width:100%;min-height:180px;" src="/static/headers/{{tirac.header_img}}">
       -->
@@ -35,12 +41,22 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
         </div>
       </div>
       <div style="position:absolute; bottom:26px; left:148px;color:#fff;font-size:14px;">
-        <span style="font-weight:100">Written by</span>　{{ tirac.user.username }}
+        <span style="font-weight:100">Written by</span>
+        {% if tirac.user.profile.nickname != "" %}
+        {{ tirac.user.profile.nickname }}
+        {% else %}
+        {{ tirac.user.username }}
+        {% endif %}
       </div>
     </div>
     <div class="markdownContent" style="color:#fff;background:#383838;border:1px solid #6F6F6F;border-top:0;padding:20px;border-bottom:22px solid #E41D28">
       {{ tirac.md|safe }}
     </div>
+    <p id="tags" class="white-text">タグ:
+        {% for t in tirac.settag_set.all %}
+        <a href="{% url 'article:tag' t.tag.tagname %}">{{ t.tag.tagname }}</a>
+        {% endfor %}
+    </p>
 
     <div style="font-size:26px;color:#fff;margin:60px 0px 30px 0px;">COMMENT</div>
     {% for comment in tirac.comment_set.all %}
@@ -48,7 +64,11 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
       <div style="position:relative;margin:0;width:100%">
         <div style="width:100%;height:60px;background:#081115;padding-left:130px;line-height:60px;color:#fff;">
           <div class="left">
-            {% url 'myauth:detail' comment.user.username %}
+            {% if comment.user.profile.nickname != "" %}
+            {{ comment.user.profile.nickname }}
+            {% else %}
+            {{ comment.user.username }}
+            {% endif %}
           </div>
           <div class="right" style="margin-right:30px;">
             日時
@@ -56,6 +76,11 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
         </div>
         <div style="height:100%;padding:5px 5px 5px 130px;color:#fff;">
           <p>{{ comment.text }}</p>
+          {% if comment.audio %}
+          <script>
+          document.write("<audio src='http://" + location.hostname + "/static/audio/{{ comment.audio }}' controls><\/audio>")
+          </script>
+          {% endif %}
         </div>
         <div style="position:absolute;top:18px;left:20px;">
               <a href="{% url 'myauth:detail' comment.user.username %}">
@@ -67,11 +92,20 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
     {% endfor %}
 
     {% if error %}{{error}}{% endif %}
-    <form action="{% url 'article:comment' tirac.id %}" method="post">
+    <form action="{% url 'article:comment' tirac.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="input-field">
-            <textarea id="text" name="text" class="materialize-textarea"></textarea>
+            <textarea id="text" name="text" class="materialize-textarea white-text"></textarea>
             <label for="text">コメント</label>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>音声</span>
+                    <input type="file" name="comment_audio">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate white-text" type="text">
+                </div>
+            </div>
         </div>
         <button type="submit" name="action" class="btn waves-effect waves-light">コメントする</button>
     </form>

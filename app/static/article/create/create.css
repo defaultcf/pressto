@@ -10,6 +10,14 @@ input {
   background: #fff;
 }
 
+.container .chips {
+  color: #fff;
+}
+
+.container .chips .input {
+  color: #fff;
+}
+
 #writearea {
   background: #fff;
   width: 50%;

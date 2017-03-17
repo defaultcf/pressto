@@ -25,8 +25,18 @@ class Comment(models.Model):
     user = models.ForeignKey(User, null=True)
     tirac = models.ForeignKey(Tirac, on_delete=models.CASCADE)
     text = models.CharField(max_length=500)
+    audio = models.CharField(max_length=100)
 
 
 class Iine(models.Model):
     user = models.ForeignKey(User)
     tirac = models.ForeignKey(Tirac, on_delete=models.CASCADE)
+
+
+class Tags(models.Model):
+    tagname = models.CharField(max_length=100, unique=True)
+
+
+class SetTag(models.Model):
+    tirac = models.ForeignKey(Tirac, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tags, on_delete=models.CASCADE)
