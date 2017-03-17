@@ -44,7 +44,7 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
 {% endblock %}
     <nav>
         <div class="nav-wrapper">
-            <a href="{% url 'article:create' %}">
+            <a href="{% url 'article:create' %}" class="hide-on-med-and-down">
                 <div class="btn">新しい記事を書く</div>
             </a>
             <script>
@@ -70,10 +70,7 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
                 {% endif %}
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">Javascript</a></li>
-                <li><a href="mobile.html">Mobile</a></li>
+                <li><a href="{% url 'article:create' %}">新しい記事を書く</a></li>
                 {% if request.user.is_authenticated %}
                 <li class="no-padding"><ul class="collapsible collapsible-accordion"><li>
                     <a class="collapsible-header">
@@ -111,5 +108,9 @@ document.write('<link rel="stylesheet" href="http://'+ location.hostname +'/stat
         <div class="copyright center">© 2017 Copyright pixiv spring intern 2017</div>
       </div>
   </footer>
+
+  <script>
+  $(".button-collapse").sideNav();
+  </script>
 </body>
 </html>
