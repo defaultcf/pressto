@@ -67,8 +67,23 @@ def comment(request, tirac_id):
         user = request.user
         tirac = get_object_or_404(Tirac, pk=tirac_id)
         text = request.POST['text']
+        print(request.FILES['comment_audio'])
+        try:
+            comment_audio = request.FILES['comment_audio']
+        except KeyError:
+            comment_audio = ""
         if tirac and text:
-            comment = Comment(user=user, tirac=tirac, text=text)
+            filepath = ""
+            if comment_audio != "":
+                ext = "." + str(comment_audio).rsplit(".", 1)[1]
+                filepath = str(uuid.uuid4()) + ext
+                updir = '/mnt/static/audio/' + filepath
+                destination = open(updir, 'wb+')
+                for chunk in comment_audio.chunks():
+                    destination.write(chunk)
+                destination.close()
+
+            comment = Comment(user=user, tirac=tirac, text=text, audio=filepath)
             comment.save()
             return redirect(reverse("article:detail", kwargs={'tirac_id':tirac_id}))
 

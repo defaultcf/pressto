@@ -49,40 +49,26 @@
 
   </div>
 
+  {% for tirac in user.tirac_set.all %}
   <div style="position:relative;max-width:100%;height:180px;background-image:url('http://localhost/static/article/default.jpg');border:1px solid #6F6F6F">
     <div style="position:absolute;width:100%;height:100%;background:#000;opacity:0.92"></div>
     <div style="position:absolute;top:0;left:0;width:180px;height:180px;">
       <img style="width:100px;margin:40px;" src="http://furyu.nazo.cc/twicon/{{user.username }}" class="circle responsive-img">
     </div>
     <div style="position:absolute;top:0;left:180px;height:180px;color:#fff;padding:50px;padding-left:5px;">
-      <div style="font-size:30px">タイトル</div>
+      <div style="font-size:30px">{{ tirac.subject }}</div>
       <div style="font-size:14px;margin-top:10px;"><span style="font-weight:100">Written by </span>{{ user.username }}</div>
     </div>
     <div style="position:absolute;top:0;right:0;color:#fff;padding:10px;font-size:12px;">
-      #ギター　#ピアノ
+      {% for t in tirac.settag_set.all %}
+      <a href="{% url 'article:tag' t.tag.tagname %}">#{{ t.tag.tagname }}</a>
+      {% endfor %}
     </div>
     <div style="position:absolute;bottom:0;right:0;color:#00D80A;font-size:14px;padding:10px;padding-right:20px;">
       <img src="http://localhost/static/img/ic_thumb_up_black_24px.png" style="margin-right:3px;">5
     </div>
   </div>
-
-
-  <div style="position:relative;max-width:100%;height:180px;background-image:url('http://localhost/static/article/default.jpg');border:1px solid #6F6F6F">
-    <div style="position:absolute;width:100%;height:100%;background:#000;opacity:0.92"></div>
-    <div style="position:absolute;top:0;left:0;width:180px;height:180px;">
-      <img style="width:100px;margin:40px;" src="http://furyu.nazo.cc/twicon/{{user.username }}" class="circle responsive-img">
-    </div>
-    <div style="position:absolute;top:0;left:180px;height:180px;color:#fff;padding:50px;padding-left:5px;">
-      <div style="font-size:30px">タイトル</div>
-      <div style="font-size:14px;margin-top:10px;"><span style="font-weight:100">Written by </span>{{ user.username }}</div>
-    </div>
-    <div style="position:absolute;top:0;right:0;color:#fff;padding:10px;font-size:12px;">
-      #ギター　#ピアノ
-    </div>
-    <div style="position:absolute;bottom:0;right:0;color:#00D80A;font-size:14px;padding:10px;padding-right:20px;">
-      <img src="http://localhost/static/img/ic_thumb_up_black_24px.png" style="margin-right:3px;">5
-    </div>
-  </div>
+  {% endfor %}
 
 
   <h5>{{ user.profile.nickname }} <small class="grey-text lighten-4">{{ user.username }}</small></h5>
