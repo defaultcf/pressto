@@ -9,6 +9,11 @@ $(() => {
     $('.chips').on('chip.select', function(e, chip){
         console.log(tagsData());
     });
+
+    $('.chips-placeholder').material_chip({
+      placeholder: 'Enter a tag',
+      secondaryPlaceholder: '+Tag',
+    });
 });
 
 
