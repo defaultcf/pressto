@@ -67,7 +67,6 @@ def comment(request, tirac_id):
         user = request.user
         tirac = get_object_or_404(Tirac, pk=tirac_id)
         text = request.POST['text']
-        print(request.FILES['comment_audio'])
         try:
             comment_audio = request.FILES['comment_audio']
         except KeyError:
@@ -87,7 +86,10 @@ def comment(request, tirac_id):
             comment.save()
             return redirect(reverse("article:detail", kwargs={'tirac_id':tirac_id}))
 
-    return HttpResponse("エラー")
+    context = {
+        'error': "必須項目が入力されていません"
+    }
+    return render(request, 'article/detail.html', context)
 
 
 def tag(request, tag_name):
