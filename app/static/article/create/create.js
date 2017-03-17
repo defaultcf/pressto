@@ -203,6 +203,6 @@ function insertAtCaret(target, str) {
   }
 }
 
-
+$('.chips input').attr('placeholder',"タグをEnter区切りで入力");
 
 });
