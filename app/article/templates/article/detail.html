@@ -11,7 +11,13 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
 {% block body %}
 <div class="container" style="max-width:960px">
     <div style="position:relative;max-width:100%;min-height:180px;)">
-      <img style="width:100%;min-height:180px;" src="http://localhost/static/article/default.jpg">
+        <script>
+        {% if tirac.header_img == "" %}
+        document.write('<img style="width:100%;min-height:180px;" src="http://' + location.hostname + '/static/article/default.jpg">');
+        {% else %}
+        document.write('<img style="width:100%;min-height:180px;" src="http://' + location.hostname + '/static/headers/{{ tirac.header_img }}">');
+        {% endif %}
+        </script>
       <!--
       <img style="width:100%;min-height:180px;" src="/static/headers/{{tirac.header_img}}">
       -->
@@ -43,7 +49,7 @@ document.write('<script src="http://'+ location.hostname +'/static/article/detai
     </div>
     <p id="tags">タグ:
         {% for t in tirac.settag_set.all %}
-        <span>{{ t.tag.tagname }}</span>
+        <a href="{% url 'article:tag' t.tag.tagname %}">{{ t.tag.tagname }}</a>
         {% endfor %}
     </p>
 

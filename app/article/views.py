@@ -41,13 +41,13 @@ def create(request):
             tirac = Tirac(user=user, subject=subject, body=body, md=md,header_img=filepath)
             tirac.save()
             for t in tag:
-                tags = Tags(tagname=t)
-                tags.save()
+                tags, created = Tags.objects.get_or_create(tagname=t)
                 setag = SetTag(tirac=tirac, tag=tags)
                 setag.save()
             context = {
                 'message': "追加しました"
             }
+            return redirect(reverse("article:index"))
         else:
             context = {
                 'error': "必須項目が入力されていません"
